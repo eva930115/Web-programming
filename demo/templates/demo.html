@@ -15,7 +15,7 @@
     <!-- hearder -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
         <div class="container">
-            <a href="#" class="navbar-brand">JK</a>
+            <a href="#" class="navbar-brand">Web Programming Group7</a>
     
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent">
@@ -30,11 +30,15 @@
                     <li class="nav-item">
                         <a href="#room" class="nav-link">房型介紹</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#more" class="nav-link">更多資料</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     
+
     <!-- 介紹 -->
     <div class="p-5 text-center border-bottom" id="my">
         <h1>Hotel介紹</h1>
@@ -46,7 +50,12 @@
                 111370102	蔡炅曄 <br>
             </p>
         </div>
+
+        <a href="{{ url_for('booking') }}" class="btn btn-primary col-3 mx-auto">Book a Room</a> 
+        <a href="{{ url_for('booking') }}" class="btn btn-primary col-3 mx-auto">Check Book</a> 
     </div>
+
+
 
    <!-- 卡片 -->
     <div class="p-5" id="room">
@@ -61,35 +70,152 @@
                                 &#128100 入住1人<br>
                                 &#128719 一小床
                             </p>
-                            <button class="btn btn-primary">Detail</button>
+                            
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                      More Details...
+                                    </button>
+                                  </h2>
+                                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <p>
+                                        ● 房間面積:14m²~16m²<br>
+                                        ● 床型:一張標準雙人床150X195CM<br>
+                                        ● 入住人數:1位<br>
+                                        ● 衛浴：淋浴<br>
+                                        ● 景觀:無窗<br>
+                                        **本房型無加床服務**
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm">
                     <div class="card shadow-lg">
-                        <img src="../Image/DoubleRoom1.jpg" alt="double room" class="card-img-top">
+
+                        <div id="DoubleCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="../Image/DoubleRoom1.jpg" class="d-block w-100" alt="01">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="../Image/DoubleRoom2.jpg" class="d-block w-100" alt="02">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="../Image/DoubleRoom3.jpg" class="d-block w-100" alt="03">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="../Image/DoubleRoom4.jpg" class="d-block w-100" alt="04">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#DoubleCarousel" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#DoubleCarousel" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    
                         <div class="card-body">
                             <h3 class="card-title">Double Room</h3>
                             <p class="card-text">
                                 &#128101 入住2人<br>
                                 &#128719 一大床
                             </p>
-                            <button class="btn btn-primary">Detail</button>
+                           
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                                      More Details...
+                                    </button>
+                                  </h2>
+                                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <p>
+                                        •房間面積:20m²平方公尺<br>
+                                        •床型:兩張單人床100cm*195cm或依照旅客需求安排單人床合併成加大雙人床200cm*195cm<br>
+                                        •入住人數:適合一或二位旅客住宿<br>
+                                        •衛浴:淋浴<br>
+                                        •景觀:無窗<br>
+                                        **本房型無加床服務**
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm">
                     <div class="card shadow-lg">
-                        <img src="../Image/DeluxRoom1.jpg" alt="Delux room" class="card-img-top">
+                        
+                        <div class="col-sm">
+                            <div class="card shadow-lg">
+        
+                                <div id="DeluxCarousel" class="carousel slide">
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                        <img src="../Image/DeluxRoom1.jpg" class="d-block w-100" alt="01">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="../Image/DeluxRoom2.jpg" class="d-block w-100" alt="02">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="../Image/DeluxRoom3.jpg" class="d-block w-100" alt="03">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="../Image/DeluxRoom4.jpg" class="d-block w-100" alt="04">
+                                      </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#DeluxCarousel" data-bs-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#DeluxCarousel" data-bs-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                        
                         <div class="card-body">
                             <h3 class="card-title">Delux Room</h3>
                             <p class="card-text">
                                 &#128101 入住3人<br>
                                 &#128719 一小床+一大床
                             </p>
-                            <button class="btn btn-primary">Detail</button>
+             
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseThree">
+                                      More Details...
+                                    </button>
+                                  </h2>
+                                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <p>
+                                        •房間面積:21m²平方公尺<br>
+                                        •客房房型:一張雙人大床150cm*195cm及一張單人床100cm*195cm<br>
+                                        •入住人數:適合二至三位旅客住宿<br>
+                                        •衛浴:淋浴<br>
+                                        •景觀:無窗<br>
+                                        **本房型無加床服務**
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div> 
+
                         </div>
                     </div>
                 </div>
@@ -97,21 +223,20 @@
         </div>
     </div>
 
+
     <!-- footer -->
-    <footer class="p-4 border-top">
+    <footer class="p-4 border-top" id="more">
         <div class="container d-flex align-items-center justify-content-between">
             <address>
                 <strong>Group7 Hotel</strong><br>
                 &#9742 0922610121<br>
                 &#128205 台北市大安區忠孝東路三段1號<br>
                 &#128231 can'tFind@gmail.com<br>
-                &#127757	www.groupSevenHotel.com<br>
+                &#127757 www.groupSevenHotel.com<br>
             </address>
         </div>
     </footer>
     
-    
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
