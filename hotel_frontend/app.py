@@ -6,9 +6,11 @@ from wtforms.validators import DataRequired
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+import psycopg2
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'YourSecretKey'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:!Qazxsw2@localhost/my_hotel'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:0115@localhost/my_hotel'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -66,6 +68,9 @@ def booking():
             check_in_date = form.check_in_date.data,
             check_out_date = form.check_out_date.data
         )
+        
+        # if new_booking.check_in_date > new_booking.check_out_date:
+        
         db.session.add(new_booking)
         db.session.commit()
         
@@ -73,19 +78,33 @@ def booking():
     
     return render_template('booking.html', form=form)
 
+
+@app.route('/check')
+def check():
+    conn = psycopg2.connect(dbname='my_hotel', user='postgres', password='0115', host='localhost')
+    cur = conn.cursor()
+    cur.execute('SELECT check_in_date, check_out_date, guest_id FROM Booking ORDER BY check_in_date;')
+    data = cur.fetchall()
+    new_data = []
+    for row in data:
+        new_row = list(row)
+        cur.execute(
+            f'SELECT guest_name FROM Guest WHERE guest_id = {row[2]}',
+        )
+        new_row.append(cur.fetchall()[0][0])
+        cur.execute(
+            f'SELECT contact_info FROM Guest WHERE guest_id = {row[2]}',
+        )
+        new_row.append(cur.fetchall()[0][0])
+        new_data.append(new_row)
+
+    cur.close()
+    conn.close()
+    return render_template('check.html', data=new_data)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
 
-# 在 app.py 中的 index 路由下方增加
-@app.route('/check')
-def check():
-    # 此處你需要根據實際情況從資料庫中檢索預定資訊
-    # 這裡假設使用 Booking 表格
-    booking_data = Booking.query.all()
-
-    # 根據實際情況，從 booking_data 中提取需要的資訊，組成列表
-    data = [(booking.check_in_date, booking.check_out_date, booking.booking_id,
-             booking.guest.guest_name, booking.guest.contact_info) for booking in booking_data]
-
-    return render_template('check.html', data=data)

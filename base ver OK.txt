@@ -1,0 +1,7 @@
+dbname='my_hotel'
+user:postgres
+password:0115
+
+
+line 13 'postgresql://[user]:[password]@localhost/[dbname]'
+line 84
