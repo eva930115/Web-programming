@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- [existing head content] -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="p-3 text-center border-bottom">
+            <h1>Book a Room</h1>
+        </div>
+        
+        <div class="p-3 text-center">
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <div class="row mb-3">  <!-- Guest -->
+                    <label for="guest_name" class="col-auto col-sm-3 col-form-label text-end">{{ form.guest_name.label }}</label>
+                    <div class="col-auto">
+                        {{ form.guest_name(class="form-control") }}
+                    </div>
+                </div>
+                <div class="row mb-3">  <!-- Room type -->
+                    <label for="room_number" class="col-auto col-sm-3 col-form-label text-end">{{ form.room_number.label }}</label>
+                    <div class="col-auto">
+                        {{ form.room_number(class="form-control") }}
+                    </div>
+                </div>
+                <div class="row mb-3">  <!-- check in -->
+                    <label for="check_in_date" class="col-auto col-sm-3 col-form-label text-end">{{ form.check_in_date.label }}</label>
+                    <div class="col-auto">
+                        {{ form.check_in_date(class="form-control") }}
+                    </div>
+                </div>
+                <div class="row mb-3">  <!-- check out -->
+                    <label for="check_out_date" class="col-auto col-sm-3 col-form-label text-end">{{ form.check_out_date.label }}</label>
+                    <div class="col-auto">
+                        {{ form.check_out_date(class="form-control") }}
+                    </div>
+                </div>
+                <div class="row mb-3">  <!-- phone -->
+                    <label for="contact_info" class="col-auto col-sm-3 col-form-label text-end">{{ form.contact_info.label }}</label>
+                    <div class="col-auto">
+                        {{ form.contact_info(class="form-control") }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-auto">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="row"> </div>
+        <div class="row align-items-end">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <a class="btn btn-primary " href="{{ url_for('index') }}" role="button">Home</a>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+</html>
