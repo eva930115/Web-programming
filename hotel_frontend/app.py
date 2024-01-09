@@ -70,12 +70,10 @@ def booking():
         )
         
         # if new_booking.check_in_date > new_booking.check_out_date:
-        
         db.session.add(new_booking)
         db.session.commit()
         
         return redirect(url_for('index'))
-    
     return render_template('booking.html', form=form)
 
 
@@ -101,8 +99,6 @@ def check():
     cur.close()
     conn.close()
     return render_template('check.html', data=new_data)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
